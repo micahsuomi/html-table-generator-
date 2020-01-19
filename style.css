@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', Helvetica, sans-serif;
+    padding: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.header {
+    text-align: center;
+    text-shadow: grey;
+}
+
+.container {
+    background-color: #F6E326;
+    padding: 2rem 4rem;
+}
+
+.inputs-container {
+    margin-top: 2rem;
+}
+
+label {
+    font-size: 12px;
+}
+.text-inputs-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.value-input {
+    width: 7rem;
+    height: 1.5rem;
+    margin-left: -2rem;
+}
+
+.color-inputs-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.color-input {
+    height: 2.3rem;
+    width: 4rem;
+    margin-left: .1rem;
+    padding: .1rem;
+    background-color: rgb(241, 227, 72);
+    border-radius: 3px;
+
+}
+
+.font-type__input,
+.font-weight__input,
+.text-align__input {
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: .2em;
+
+}
+.font-size__input {
+    padding: .2em;
+    width: 6rem;
+
+}
+
+.other-inputs-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.buttons-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start
+}
+
+.btn {
+    margin: .4rem;
+    padding: .8rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-generate {
+    background-color: #75B04F;
+
+}
+.btn-getcode {
+    background-color: #D1CCCC;
+
+}
+
+.btn-generate:hover {
+    background-color: rgb(179, 229, 145);
+
+}
+.btn-getcode:hover {
+    background-color: rgb(155, 141, 141);
+
+}
+
