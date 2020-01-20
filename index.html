@@ -1,115 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML Tables Generator</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
     <div class="wrapper">
         <div class="container">
-            <h1 class="header">HTML Table Generator</h1>
+            <h1 class="header"><span class="html">HTML</span> <span class="t-letter">T</span>able <span class="t-letter">G</span>enerator</h1>
             <div class="inputs-container">
 
-                <form class="table-form" >
-                <div class="text-inputs-wrapper">
+                <form class="table-form">
+                    <div class="text-inputs-wrapper">
 
-                    <label for ="rows" class="row-label">Number of rows</label>
-                    <input type="text" class="value-input rows-input">
+                        <label for="rows" class="row-label">Number of rows</label>
+                        <input type="text" class="value-input rows-input" placeholder="rows">
 
-                    <label for ="columns" class="col-label">Number of columns</label>
-                    <input type="text" class="value-input columns-input">
+                        <label for="columns" class="col-label">Number of columns</label>
+                        <input type="text" class="value-input columns-input" placeholder="columns">
 
-                    <label for ="width">Width in percentage</label>
-                    <input type="text" class="value-input width-input">
+                        <label for="width">Width in percentage</label>
+                        <input type="text" class="value-input width-input">
 
-                    <label for ="border">Border width in pixels</label>
-                    <input type="text" class="value-input border-input">
+                        <label for="border">Border width in pixels</label>
+                        <input type="text" class="value-input border-input">
 
-                </div>
+                    </div>
 
-                <div class="color-inputs-wrapper">
+                    <div class="color-inputs-wrapper">
 
-                    <label for ="table background color">Table background color</label>
-                    <input type="color" value ="#E9C09F" class="color-input table-background__color">
+                        <label for="table background color">Table background color</label>
+                        <input type="color" value="#E9C09F" class="color-input table-background__color">
 
-                    <label for ="head">Head Background color</label>
-                    <input type="color" value="#000000" class="color-input head-background__color">
+                        <label for="head">Head Background color</label>
+                        <input type="color" value="#000000" class="color-input head-background__color">
 
-                    <label for ="width">Body Background color</label>
-                    <input type="color" value ="#ffffff" class="color-input body-background__color">
+                        <label for="width">Body Background color</label>
+                        <input type="color" value="#ffffff" class="color-input body-background__color">
 
-                    <label for ="border">Border Color</label>
-                    <input type="color" value ="#AA8079" class="color-input border-color">
+                        <label for="border">Border Color</label>
+                        <input type="color" value="#AA8079" class="color-input border-color">
 
-                    <label for ="border">Font Color</label>
-                    <input type="color" value ="#5D94D2" class="color-input font-color">
+                        <label for="border">Font Color</label>
+                        <input type="color" value="#5D94D2" class="color-input font-color">
 
-                </div>
+                    </div>
 
-                <div class="other-inputs-wrapper">
+                    <div class="other-inputs-wrapper">
 
-                    <label for ="border collapse">Border Collapse</label>
-                    <input type="checkbox" class="border-collapse__input">
+                        <label for="border collapse">Border Collapse</label>
+                        <input type="checkbox" checked class="border-collapse__input">
 
-                    <label for ="head">Font Type</label>
+                        <label for="head">Font Type</label>
 
-                    <select name="font-type" class="font-type__input">
-                        <option value="Arial">Arial</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Helvetica">Helvetica</option>
-                        <option value="Garamond">Garamond</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Lucida Sans">Lucida Sans</option>
-                        <option value="Thaoma">Thaoma</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Verdana">Verdana</option>
-                      </select>
-
-                    <label for ="width">Font Weight</label>
-                    <select name="font-weight" class="font-weight__input">
-                        <option value="200">200</option>
-                        <option value="500">500</option>
-                        <option value="700">700</option>
-                        <option value="900">900</option>
-
-                      </select>
-
-                    <label for ="border">Text Align
-
-                        <select name="font-align" class="text-align__input">
-                            <option value="left">Left</option>
-                            <option value="center">Center</option>
-                            <option value="right">Right</option>
+                        <select name="font-type" class="font-type__input">
+                            <option value="Arial">Arial</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Lucida Sans">Lucida Sans</option>
+                            <option value="Thaoma">Thaoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Verdana">Verdana</option>
                         </select>
 
-                    <label for ="border">Font Size</label>
-                     <input type="text" name="font-size" class="font-size__input">
-                            
-                    </input>
+                        <label for="width">Font Weight</label>
+                        <select name="font-weight" class="font-weight__input">
+                            <option value="200">100</option>
+                            <option value="700">700</option>
+                            <option value="900">900</option>
+
+                        </select>
+
+                        <label for="border">Text Align
+
+                            <select name="font-align" class="text-align__input">
+                                <option value="left">Left</option>
+                                <option value="center">Center</option>
+                                <option value="right">Right</option>
+                            </select>
+
+                            <label for="border">Font Size</label>
+                            <input type="text" name="font-size" class="font-size__input">
+
+                            </input>
 
 
-                </div>
+                    </div>
 
 
 
-                <div class="buttons-wrapper">
-                    <button class="btn btn-generate">Generate Table</button>
-                    <button class="btn btn-getcode">Get Code</button>
-                </div>
+                    <div class="buttons-wrapper">
+                        <button class="btn btn-generate grow">Generate Table</button>
+                        <button class="btn btn-getcode grow">Get Code</button>
+                    </div>
 
             </div>
-        </form> 
+            </form>
 
         </div>
+
+        <div class="table-container">
+
+        </div>
+        <div class="copy-wrapper"></div>
     </div>
 
-        
+
+
     </div>
-    
+
 
     <script src="main.js"></script>
 </body>
+
 </html>

@@ -5,21 +5,38 @@
 }
 
 body {
-    font-family: 'Georgia', Helvetica, sans-serif;
-    padding: 2rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 
 .header {
     text-align: center;
     text-shadow: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+   
+}
+
+.html {
+    color: rgb(226, 44, 114);
+}
+.t-letter,
+.g-letter {
+    font-size: 45px;
+    color: rgb(235, 220, 20);
+    font-weight: 700;
 }
 
 .container {
-    background-color: #F6E326;
-    padding: 2rem 4rem;
+    padding: 2.5rem 4rem;
+    background-image: linear-gradient(to right bottom, rgba(15, 14, 14, 0.9), rgba(37, 50, 54, 0.9)), 
+    url("background.jpg");
+    background-size:cover;
+    background-position: center;
 }
 
 .inputs-container {
@@ -28,6 +45,7 @@ body {
 
 label {
     font-size: 12px;
+    color: white;
 }
 .text-inputs-wrapper {
     display: flex;
@@ -53,7 +71,7 @@ label {
     width: 4rem;
     margin-left: .1rem;
     padding: .1rem;
-    background-color: rgb(241, 227, 72);
+    background-color: lightgray;
     border-radius: 3px;
 
 }
@@ -81,9 +99,9 @@ label {
 }
 
 .buttons-wrapper {
-    margin-top: 1rem;
+    margin-top: 1.3rem;
     display: flex;
-    justify-content: flex-start
+    justify-content: center;
 }
 
 .btn {
@@ -92,23 +110,69 @@ label {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    text-transform: uppercase;
+    color: white;
+    
 }
 
+
 .btn-generate {
-    background-color: #75B04F;
+    background-color: rgb(226, 44, 114);
 
 }
 .btn-getcode {
-    background-color: #D1CCCC;
+    background-color: rgb(18, 155, 189);
 
 }
 
 .btn-generate:hover {
-    background-color: rgb(179, 229, 145);
+    background-color: rgb(173, 24, 82);
 
 }
 .btn-getcode:hover {
-    background-color: rgb(155, 141, 141);
+    background-color: rgb(10, 111, 136);
 
 }
 
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+.btn-generate:active,
+.btn-getcode:active {
+    transform: translateY(-.1rem);
+}
+
+.table-container {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.textarea-field {
+    width: 20rem;
+    height: 20rem;
+}
+
+.copy-wrapper {
+    padding: 0 5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.copy-btn {
+    margin: .4rem;
+    padding: .8rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(18, 155, 189);
+    color: white;
+
+
+}
+
+.copy-btn:hover {
+    background-color: rgb(10, 111, 136);
+
+}

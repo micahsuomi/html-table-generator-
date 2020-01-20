@@ -1,6 +1,5 @@
-let table = document.createElement('TABLE');
 let form = document.querySelector('.table-form');
-
+let tableContainer = document.querySelector('.table-container');
 
 //selects all text input values
 const rowsInput = document.querySelector('.rows-input');
@@ -33,84 +32,102 @@ const getCodeBtn = document.querySelector('.btn-getcode');
 let colText = document.querySelector('.row-label');
 let rowText = document.querySelector('.col-label');
 
+const copyWrapper = document.querySelector('.copy-wrapper');
 let tableRow, tableCol, tableHeader;
 
-
-
-
 //testing elements
-const box = document.querySelector('.box');
 const color = document.querySelector('.color-input');
+
 
 form.addEventListener('submit', handleSubmit = (e) => {
     e.preventDefault();
-})
+});
+
+const createNode = (e) => {
+    return document.createElement(e);
+};
+
+const append = (parent, el) => {
+    return parent.appendChild(el)
+};
+
+let table = createNode('table');
+let input = createNode('textarea');
+let copyBtn = createNode('button');
+
 
 generateBtn.addEventListener('click', generateTable = () => {
     table.textContent = "";
-    console.log(table)
+    input.remove();
+    copyBtn.remove();
+
     //creates headers
 
-    if(!colsInput.value.match(/^[0-9]*$/) || colsInput.value == null) {
+    if(!colsInput.value.match(/^[0-9]*$/) || colsInput.value < 1) {
         rowText.textContent = 'input a number value';
         rowText.style.color = 'red';
     } else {
-        rowText.textContent = 'Number of columns';
-        rowText.style.color = 'black';
+        rowText.textContent = 'Number of colums';
+        rowText.style.color = 'white';
         for(let i = 0; i < colsInput.value; i++) {
-            tableHeader = document.createElement('th');
+            tableHeader = createNode('th');
             tableHeader.textContent = 'Head';
             tableHeader.style.color = 'white';
-            table.append(tableHeader);
+            append(table, tableHeader);
             changeHeaderBackground();
+            headColorInput.addEventListener('click', () => changeHeaderBackground());
             setHeaderFonts();
     }
      
-    // let headerCount = (Math.round(rowsInput.value / 2));
    
-
     }
 
-    if(!rowsInput.value.match(/^[0-9]*$/) || rowsInput.value == null) {
+    if(!rowsInput.value.match(/^[0-9]*$/) || rowsInput.value < 1) {
         colText.textContent = 'input a number value';
         colText.style.color = 'red';
     } else {
         colText.textContent = 'Number of columns';
-        colText.style.color = 'black';
+        colText.style.color = 'white';
         for(let i = 0; i < rowsInput.value; i++) {
             //creates rows
-            tableRow = document.createElement('tr');
-            table.append(tableRow);
-            document.body.appendChild(table)
-            console.log(table);
+            tableRow = createNode('tr');
+            append(table, tableRow);
             //creates columns
             for(let i = 0; i < colsInput.value; i++) {
-            tableCol = document.createElement('td');
-            tableRow.append(tableCol);
+            tableCol = createNode('td');
+            append(tableRow, tableCol);
             tableCol.textContent = 'value';
             tableCol.style.padding = '.5rem';
-            
+
+
             changeBorderProperties();
             changeBodyBackground();
             setFonts();
-            testBorderCollapse();
+            // alignTextInput.addEventListener('click', () => setFonts());
     }
-  
 
 
         }
+        console.log(table);
+        tableContainer.append(table)
+
+
+
     
     }
 
     changeWidth();
+    tableWidth.addEventListener('keydown', () => {
+        changeWidth();
+    })
     changeTableBackgroundColor();
-    
+
 });
 
-
+console.log(table)
 
 const changeWidth = () => {
-    table.style.width = tableWidth.value;
+    table.style.width = `${tableWidth.value*10}%`;
 }
 
 
@@ -119,6 +136,8 @@ const changeTableBackgroundColor = () => {
 }
 const changeBorderProperties = () => {
     tableCol.style.border = `${borderSizeInput.value} solid ${borderColorInput.value}`;
+    table.style.border = `${borderSizeInput.value} solid ${borderColorInput.value}`;
+
 }
 
 const changeBodyBackground = () => {
@@ -132,10 +151,9 @@ const changeHeaderBackground = () => {
 
 const setHeaderFonts = () => {
     tableHeader.style.fontFamily = fontStyleInput.value;    
-    tableHeader.style.fontSize = fontSizeInput.value;
+    tableHeader.style.fontSize = `${fontSizeInput.value}px`;
     tableHeader.style.fontWeight = fontWeightInput.value;
-    // tableHeader.style.textAlign = alignTextInput.value;
-    // tableHeader.style.color = colorInput.value;
+ 
 
 }
 const setFonts = () => {
@@ -145,27 +163,40 @@ const setFonts = () => {
     tableCol.style.fontWeight = fontWeightInput.value;
     tableCol.style.textAlign = alignTextInput.value;
     tableCol.style.color = colorInput.value;
+    console.log(tableCol)
 
 }
 
 
+table.style.borderCollapse = "collapse";
+borderCollapseCheckbox.addEventListener('change', borderCollapse = () => {
+    borderCollapseCheckbox.checked ? table.style.borderCollapse = "collapse" : table.style.borderCollapse = 'separate';
 
-const testBorderCollapse = () => {
-    !borderCollapseCheckbox.checked ? table.style.borderCollapse = "collapse" : tableCol.style.border = '.5rem';
-
-}
+})
 
 getCodeBtn.addEventListener('click', getCode = () => {
-    console.log('working');
-    let tableValue = table.innerHTML;
+    let tableValue = tableContainer.innerHTML;
     console.log(tableValue);
-    let input = document.createElement('input');
-    input.value = `<table>${tableValue}</table>`;
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand("copy");
-    input.remove();
+    table.remove();
+    input.value = tableValue;
+    input.style.width = '100%'
+    input.style.height = '25rem'
+    table.innerHTML = input.value;
+    copyBtn.textContent = 'Copy';
+    copyBtn.setAttribute('class', 'copy-btn');
+    append(tableContainer, input);
+    append(copyWrapper, copyBtn);
+
+        copyBtn.addEventListener('click', copyCode = () => {
+        input.select();
+        document.execCommand("copy");
+        copyBtn.textContent = 'Copied!';
+    })
+
+    
 })
+
+
 
 
 
