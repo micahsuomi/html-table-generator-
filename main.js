@@ -67,7 +67,7 @@ generateBtn.addEventListener('click', generateTable = () => {
         rowText.textContent = 'input a number value';
         rowText.style.color = 'red';
     } else {
-        rowText.textContent = 'Number of colums';
+        rowText.textContent = 'Number of rows';
         rowText.style.color = 'white';
         for(let i = 0; i < colsInput.value; i++) {
             tableHeader = createNode('th');
@@ -98,6 +98,7 @@ generateBtn.addEventListener('click', generateTable = () => {
             append(tableRow, tableCol);
             tableCol.textContent = 'value';
             tableCol.style.padding = '.5rem';
+            tableCol.style.border = `1px solid ${borderColorInput.value}`
 
 
             changeBorderProperties();
@@ -116,8 +117,8 @@ generateBtn.addEventListener('click', generateTable = () => {
     
     }
 
-    changeWidth();
-    tableWidth.addEventListener('keydown', () => {
+        changeWidth();
+        tableWidth.addEventListener('keydown', () => {
         changeWidth();
     })
     changeTableBackgroundColor();
@@ -127,7 +128,7 @@ generateBtn.addEventListener('click', generateTable = () => {
 console.log(table)
 
 const changeWidth = () => {
-    table.style.width = `${tableWidth.value*10}%`;
+    table.style.width = `${tableWidth.value*1}%`;
 }
 
 
@@ -135,8 +136,8 @@ const changeTableBackgroundColor = () => {
     table.style.background = tableColorInput.value;
 }
 const changeBorderProperties = () => {
-    tableCol.style.border = `${borderSizeInput.value} solid ${borderColorInput.value}`;
-    table.style.border = `${borderSizeInput.value} solid ${borderColorInput.value}`;
+    tableCol.style.border = `${borderSizeInput.value}px solid ${borderColorInput.value}`;
+    table.style.border = `${borderSizeInput.value}px solid ${borderColorInput.value}`;
 
 }
 

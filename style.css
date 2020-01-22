@@ -146,6 +146,7 @@ label {
     padding: 3rem;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .textarea-field {
