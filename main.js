@@ -38,7 +38,7 @@ let tableRow, tableCol, tableHeader;
 //testing elements
 const color = document.querySelector('.color-input');
 
-
+//prevent the page to refresh on submit
 form.addEventListener('submit', handleSubmit = (e) => {
     e.preventDefault();
 });
@@ -52,8 +52,8 @@ const append = (parent, el) => {
 };
 
 let table = createNode('table');
-let input = createNode('textarea');
-let copyBtn = createNode('button');
+    input = createNode('textarea');
+    copyBtn = createNode('button');
 
 
 generateBtn.addEventListener('click', generateTable = () => {
@@ -61,8 +61,7 @@ generateBtn.addEventListener('click', generateTable = () => {
     input.remove();
     copyBtn.remove();
 
-    //creates headers
-
+    //if statement for colums with regex
     if(!colsInput.value.match(/^[0-9]*$/) || colsInput.value < 1) {
         rowText.textContent = 'input a number value';
         rowText.style.color = 'red';
@@ -70,18 +69,11 @@ generateBtn.addEventListener('click', generateTable = () => {
         rowText.textContent = 'Number of rows';
         rowText.style.color = 'white';
         for(let i = 0; i < colsInput.value; i++) {
-            tableHeader = createNode('th');
-            tableHeader.textContent = 'Head';
-            tableHeader.style.color = 'white';
-            append(table, tableHeader);
-            changeHeaderBackground();
-            headColorInput.addEventListener('click', () => changeHeaderBackground());
-            setHeaderFonts();
-    }
-     
-   
-    }
-
+            //function to create headers. headers are created based on cols input value
+            createHeaders();
+    }     
+}
+    //if statement for rows with regex
     if(!rowsInput.value.match(/^[0-9]*$/) || rowsInput.value < 1) {
         colText.textContent = 'input a number value';
         colText.style.color = 'red';
@@ -89,48 +81,63 @@ generateBtn.addEventListener('click', generateTable = () => {
         colText.textContent = 'Number of columns';
         colText.style.color = 'white';
         for(let i = 0; i < rowsInput.value; i++) {
-            //creates rows
-            tableRow = createNode('tr');
-            append(table, tableRow);
+            //creates rows function
+            createRows();
+            
             //creates columns
             for(let i = 0; i < colsInput.value; i++) {
-            tableCol = createNode('td');
-            append(tableRow, tableCol);
-            tableCol.textContent = 'value';
-            tableCol.style.padding = '.5rem';
-            tableCol.style.border = `1px solid ${borderColorInput.value}`
-
-
+            createColums();
+           
+            //set table properties functions
             changeBorderProperties();
             changeBodyBackground();
             setFonts();
+            alignText();
             // alignTextInput.addEventListener('click', () => setFonts());
     }
 
-
         }
-        console.log(table);
-        tableContainer.append(table)
-
-
-
+        tableContainer.append(table);
     
     }
 
-        changeWidth();
-        tableWidth.addEventListener('keydown', () => {
-        changeWidth();
-    })
     changeTableBackgroundColor();
 
 });
 
-console.log(table)
 
+const createHeaders = () => {
+    tableHeader = createNode('th');
+    tableHeader.textContent = 'Head';
+    tableHeader.style.color = 'white';
+    append(table, tableHeader);
+    changeHeaderBackground();
+    headColorInput.addEventListener('click', () => changeHeaderBackground());
+    setFonts();
+
+};
+
+const createRows = () => {
+    tableRow = createNode('tr');
+    append(table, tableRow);
+};
+
+const createColums = () => {
+    tableCol = createNode('td');
+    append(tableRow, tableCol);
+    tableCol.textContent = 'value';
+    tableCol.style.padding = '.5rem';
+    tableCol.style.border = `1px solid ${borderColorInput.value}`
+}
+
+tableWidth.addEventListener('keydown', () => {
+    changeWidth();
+})
+
+//set properties functions, width, background colors
 const changeWidth = () => {
     table.style.width = `${tableWidth.value*1}%`;
 }
-
 
 const changeTableBackgroundColor = () => {
     table.style.background = tableColorInput.value;
@@ -142,39 +149,37 @@ const changeBorderProperties = () => {
 }
 
 const changeBodyBackground = () => {
-    tableCol.style.background = bodyColorInput.value
+    tableCol.style.background = bodyColorInput.value;
 }
 
 const changeHeaderBackground = () => {
     tableHeader.style.background = headColorInput.value;
 }
 
+//setting font functions 
 
-const setHeaderFonts = () => {
-    tableHeader.style.fontFamily = fontStyleInput.value;    
-    tableHeader.style.fontSize = `${fontSizeInput.value}px`;
-    tableHeader.style.fontWeight = fontWeightInput.value;
- 
-
-}
 const setFonts = () => {
 
-    tableCol.style.fontFamily = fontStyleInput.value;
-    tableCol.style.fontSize = `${fontSizeInput.value}px`;
-    tableCol.style.fontWeight = fontWeightInput.value;
-    tableCol.style.textAlign = alignTextInput.value;
-    tableCol.style.color = colorInput.value;
-    console.log(tableCol)
+    table.style.fontFamily = fontStyleInput.value;
+    table.style.fontSize = `${fontSizeInput.value}px`;
+    table.style.fontWeight = fontWeightInput.value;
+    table.style.color = colorInput.value;
 
 }
 
+const alignText = () => {
+    tableCol.style.textAlign = alignTextInput.value;
 
+}
+
+//table collapse
 table.style.borderCollapse = "collapse";
 borderCollapseCheckbox.addEventListener('change', borderCollapse = () => {
     borderCollapseCheckbox.checked ? table.style.borderCollapse = "collapse" : table.style.borderCollapse = 'separate';
 
 })
 
+//generates the html table code and copies it
 getCodeBtn.addEventListener('click', getCode = () => {
     let tableValue = tableContainer.innerHTML;
     console.log(tableValue);
